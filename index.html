@@ -1,0 +1,52 @@
+
+---
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lockley Seminar</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      line-height: 1.7;
+    }
+    article {
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    img { max-width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>Lockley Seminar</h1>
+  <p>Website under development.</p>
+
+  <h2>最新の投稿</h2>
+
+  {% assign count = 0 %}
+  {% for post in site.pages %}
+    {% if post.path contains 'content/posts/' %}
+      {% assign count = count | plus: 1 %}
+      <article>
+        <h3>{{ post.title | escape }}</h3>
+        <small>{{ post.category | escape }}</small>
+        {% if post.image %}
+          <p><img src="{{ post.image | relative_url }}" alt=""></p>
+        {% endif %}
+        <div>{{ post.content | markdownify }}</div>
+      </article>
+    {% endif %}
+  {% endfor %}
+
+  {% if count == 0 %}
+    <p>まだ投稿がありません。</p>
+  {% endif %}
+</body>
+</html>
