@@ -1,0 +1,32 @@
+
+media:
+  input: media
+  output: /media
+
+content:
+  - name: posts
+    label: ゼミ投稿
+    type: collection
+    path: content/posts
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+      - name: category
+        label: カテゴリー
+        type: select
+        options:
+          values:
+            - value: activity
+              label: 活動記録
+            - value: poster
+              label: 募集ポスター
+            - value: news
+              label: お知らせ
+      - name: image
+        label: メイン画像
+        type: image
+      - name: body
+        label: 本文
+        type: rich-text
